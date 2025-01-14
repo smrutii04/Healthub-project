@@ -134,6 +134,7 @@
   font-size: 16px; /* Adjust font size */
   color: white; /* Make the price white to match the icons */
   margin-right: 8px; /* Add space between the price and the bag icon */
+  width: 61px;
 }
 
 /* Bag and User Icon Button Styling */
@@ -178,45 +179,6 @@
   height: 20px;
 }
 
-.allCatTab{
-  background-color: #0bbad2;
-  color: white;
-  padding: 0px 30px;
-  border-radius: 30px;
-  margin: 2px 2px;
-  
-}
-
-.allCatTab:hover {
-  background-color: #1778a2;
-}
-
-.text {
-  font-weight: 600;
-  position: relative;
-  top: 1px;
-  padding: 0px 9px;
-
-}
-
-.allCatTab svg {
-  height: 50px;
-  width: 22px;
-}
-
-.services {
-  justify-content: center;
-    display: flex;
-    padding: 14px 0px;
-}
-
-.list-element {
-  text-decoration: none;
-  color: black;
-  padding: 0px 30px;
-  font-weight: 600;
-  font-size: 20px;
-}
 
 .list-element:Hover {
   color: #0bbad2;
@@ -228,3 +190,63 @@
     top: -2px;
 }
 
+.locationModel .MuiPaper-elevation{
+  padding: 25px;
+
+}
+
+ .cityList {
+  margin-bottom: 0px;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 290px;
+  margin: 0px 69px;
+}
+.cityList li {
+  width: 100%;
+  list-style: none;
+  justify-content: flex-start;
+}
+.cityList li button{
+  width: 100%;
+  text-transform: capitalize !important;
+  color: black;
+  justify-content: flex-start !important;
+  padding: 4px 0px !important;
+  background: #fcfcfc;
+}
+
+
+@media (min-width:1300px)
+{
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1200px;
+  }
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+  height: 8px;
+  
+}
+::-webkit-scrollbar-thumb{
+ background: #ccc;
+
+}
+
+.close_{
+  position: relative;
+  top: -151px;
+  left: 458px;
+  width: 23px;
+  height: 23px;
+  color: #141414;
+  background: white;
+
+}
+
+.close_ svg {
+  width: 23px;
+  height: 23px;
+}
