@@ -9,14 +9,14 @@ function Home() {
       {/* Header Section */}
      <Navbar/>
 
-      {/* Hero Section */}
+      
       <section className="hero-section">
         <div className="hero-content">
           <h1>Your All-in-One Digital Hospital</h1>
           <p>Transforming healthcare access with AI and technology.</p>
           <div className="hero-buttons">
             <button>Upload X-ray for AI Analysis</button>
-            <button>Book a Consultation</button>
+            <button onClick={() => window.location.href = '/book'}>Book a Consultation</button>
             <button>Explore Features</button>
           </div>
         </div>
