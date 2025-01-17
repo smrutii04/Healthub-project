@@ -2,17 +2,18 @@ import React from 'react';
 import { useCart } from './CartContext'; // Import the custom hook
 import './CartPage.css';
 import { FiPlus, FiMinus } from 'react-icons/fi'; // Import icons for increment and decrement
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
 
   const handleIncrement = (id) => {
-    const item = cartItems.find((item) => item.id === id);
+    const item = cartItems.find((item) => item._id === id);
     updateQuantity(id, item.quantity + 1);
   };
 
   const handleDecrement = (id) => {
-    const item = cartItems.find((item) => item.id === id);
+    const item = cartItems.find((item) => item._id === id);
     if (item.quantity > 1) {
       updateQuantity(id, item.quantity - 1);
     }
@@ -22,6 +23,7 @@ const CartPage = () => {
     removeFromCart(id);
   };
 
+  const navigate = useNavigate();
   return (
     <div className="cart-page">
       <h2>Your Cart</h2>
@@ -30,24 +32,24 @@ const CartPage = () => {
           <p>Your cart is empty</p>
         ) : (
           cartItems.map((item) => (
-            <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} className="cart-item-image" />
+            <div key={item._id} className="cart-item">
+              <img src={item.image} alt={item.MedicineName} className="cart-item-image" />
               <div className="cart-item-info">
-                <p className="cart-item-name">{item.name}</p>
-                <p className="cart-item-price">{item.price}</p>
+                <p className="cart-item-name">{item.MedicineName}</p>
+                <p className="cart-item-price">₹ {item.MRP}</p>
                 <div className="cart-item-quantity">
                   <label>Quantity:</label>
                   <div className="quantity-controls">
-                    <button onClick={() => handleDecrement(item.id)} className="quantity-button">
+                    <button onClick={() => handleDecrement(item._id)} className="quantity-button">
                       <FiMinus />
                     </button>
                     <span className="quantity-display">{item.quantity}</span>
-                    <button onClick={() => handleIncrement(item.id)} className="quantity-button">
+                    <button onClick={() => handleIncrement(item._id)} className="quantity-button">
                       <FiPlus />
                     </button>
                   </div>
                 </div>
-                <button onClick={() => handleRemoveItem(item.id)} className="remove-item-button">
+                <button onClick={() => handleRemoveItem(item._id)} className="remove-item-button">
                   Remove
                 </button>
               </div>
@@ -62,10 +64,10 @@ const CartPage = () => {
         <p>
           Total Price: ₹
           {cartItems
-            .reduce((total, item) => total + parseFloat(item.price.replace('₹', '')) * item.quantity, 0)
+            .reduce((total, item) => total + parseFloat(item.MRP) * item.quantity, 0)
             .toFixed(2)}
         </p>
-        <button className="checkout-button">Proceed to Checkout</button>
+        <button className="checkout-button" onClick={() => navigate('/checkout')}>Proceed to Checkout</button>
       </div>
     </div>
   );

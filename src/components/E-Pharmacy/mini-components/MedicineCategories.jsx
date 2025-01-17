@@ -20,7 +20,7 @@ export default function MedicineCategories() {
             <div className="col-sm-9 navPart2">
               <ul className="list list-inline services">
                 <li className="list-inline-item">
-                  <Link to="/" className="list-element">
+                  <Link to="/order-medicines" className="list-element">
                     <CiHome /> Home
                   </Link>
                 </li>

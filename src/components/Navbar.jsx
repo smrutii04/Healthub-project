@@ -1,8 +1,16 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import "./Navbar.css"
+import Alert from './E-Pharmacy/Products/Alert';
 
 export default function Navbar() {
+
+  const user = JSON.parse(localStorage.getItem('user')); // Get user from local storage
+  const handleLogout = () => {
+    localStorage.removeItem('user'); // Remove user from local storage
+    <Alert message='Logged out successfully!'/>
+    window.location.reload(); // Refresh to update the navbar
+  };
   return (
     <>
        <header className="navbar">
@@ -11,14 +19,25 @@ export default function Navbar() {
             <a href="/">Home</a>
             <a href="#disease-detection">Disease Detection</a>
             <Link to="/order-medicines">Order Medicine</Link>
-            <a href="#consult-doctor">Consult a Doctor</a>
-            <a href="#medicine-schedule">Medicine Schedule</a>
+            <Link to="/book">Consult a Doctor</Link>
+            <Link to="/medicine-schedule">Medicine Schedule</Link>
             <a href="#medical-records">Medical Records</a>
-            <a href="#about">About Us</a>
+           
           </nav>
         <div className="auth-links">
-          <a href="#login" className="login-btn">Login</a>
-          <a href="#signup" className="signup-btn">Sign Up</a>
+        {user? (
+           // Show logged-in user's name and a Logout link
+           <>
+            <span>Welcome, {user.fullName}</span>
+            <button onClick={handleLogout} className="logout-btn">Logout</button>
+            </>
+        ):
+        (<>
+          <Link to="/login-patient" className="login-btn">Login</Link>
+          <Link to="/signup-patient" className="signup-btn">Sign Up</Link>
+        </>)}
+
+        
         </div>
       </header>
     </>

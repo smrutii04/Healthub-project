@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useCart } from '../Cart/CartContext';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Rating, Divider } from "@mui/material";
-import Alert from "./Alert"
+import { useCart } from "../Cart/CartContext";
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Rating, Divider, Typography, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import Alert from "./Alert";
 import "./SingleProduct.css";
 
 export default function SingleProduct({ product, openDialog, closeDialog }) {
@@ -16,8 +17,6 @@ export default function SingleProduct({ product, openDialog, closeDialog }) {
 
   return (
     <>
-     
-
       <Dialog
         open={openDialog}
         onClose={closeDialog}
@@ -27,60 +26,71 @@ export default function SingleProduct({ product, openDialog, closeDialog }) {
       >
         <DialogTitle className="dialog-title">
           <div className="dialog-title-content">
-            <span>{product.name}</span>
-            <button className="close-dialog" onClick={closeDialog}>
-              ×
-            </button>
+            <Typography variant="h6">{product.MedicineName}</Typography>
+            <IconButton onClick={closeDialog} className="close-dialog">
+              <CloseIcon />
+            </IconButton>
           </div>
         </DialogTitle>
 
         <DialogContent className="dialog-content">
-           {/* Bootstrap Alert Notification */}
-      {showAlert && (
-        <Alert />
-      )}
+          {showAlert && <Alert message={`${product.MedicineName} added to Cart!`} />}
           <div className="product-details-container">
             {/* Left Section: Product Image */}
             <div className="product-image-container">
               <img
                 src={product.image}
-                alt={product.name}
-                className="product-image"
+                alt={product.MedicineName}
+                className="product-img"
               />
             </div>
 
             {/* Right Section: Product Details */}
             <div className="product-info">
-              <p className="product-price">Price: {product.price}</p>
+              <Typography className="product-price" variant="h6">
+                Price: ₹{product.MRP}
+              </Typography>
               <div className="product-rating">
-                <Rating value={product.rating || 4.5} precision={0.5} readOnly />
-                <span>({product.reviews || "0"} Reviews)</span>
+                <Rating value={product.Ratings || 4.5} precision={0.5} readOnly />
+                <Typography>({product.Reviews || "0"} Reviews)</Typography>
               </div>
               <Divider style={{ margin: "10px 0" }} />
-              <p className="product-description">{product.description}</p>
+              <Typography className="product-description">
+                {product.description}
+              </Typography>
 
-              <h4>Key Benefits</h4>
+              <Typography variant="subtitle1" gutterBottom>
+                <strong>Key Benefits:</strong>
+              </Typography>
               <ul className="key-benefits-list">
                 {product.keyBenefits?.map((benefit, index) => (
                   <li key={index}>{benefit}</li>
                 ))}
               </ul>
 
-              <h4>How to Use</h4>
-              <p>{product.howToUse}</p>
+              <Typography variant="subtitle1" gutterBottom>
+                <strong>How to Use:</strong>
+              </Typography>
+              <Typography>{product.howToUse}</Typography>
 
-              <h4>Precautions</h4>
-              <p>{product.precautions}</p>
+              <Typography variant="subtitle1" gutterBottom>
+                <strong>Precautions:</strong>
+              </Typography>
+              <Typography>{product.precautions}</Typography>
             </div>
           </div>
 
           {/* Additional Information */}
           <div className="additional-info">
-            <h4>Ingredients</h4>
-            <p>{product.ingredients}</p>
+            <Typography variant="subtitle1" gutterBottom>
+              <strong>Ingredients:</strong>
+            </Typography>
+            <Typography>{product.ingredients}</Typography>
 
-            <h4>Quantity</h4>
-            <p>{product.quantity}</p>
+            <Typography variant="subtitle1" gutterBottom>
+              <strong>Quantity:</strong>
+            </Typography>
+            <Typography>{product.quantity}</Typography>
           </div>
         </DialogContent>
 

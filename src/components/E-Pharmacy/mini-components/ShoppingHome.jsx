@@ -8,12 +8,12 @@ import { IoBagOutline } from "react-icons/io5";
 import MedicineCategories from './MedicineCategories';
 import { useCart } from '../Cart/CartContext'; 
 
-export default function ShoppingNavbar() {
+export default function ShoppingHome() {
 
   const { cartItems } = useCart();
   console.log('Cart Items:', cartItems);
 
-  
+  const userId = JSON.parse(localStorage.getItem('userId'));
   
 
   return (
@@ -34,9 +34,15 @@ export default function ShoppingNavbar() {
               
               <button className="circle mr-3 profile"><FiUser/></button>
               <div className="ml-auto cartTab">
-              <span className="price">₹ {cartItems.reduce((total, item) => total + parseFloat(item.price.replace('₹', '')) * item.quantity, 0).toFixed(2)}</span>
+              <span className="price">  ₹{" "}{cartItems
+                        .reduce((total, item) => {
+                          const price = item.MRP ? parseFloat(item.MRP) : 0;
+                          return total + price * (item.quantity || 1);
+                        }, 0)
+                        .toFixed(2)}
+                 </span>
                 <div className="position-relative ml-2">
-                 <Link to="/cart">
+                 <Link to={`/cart`}>
                  <button className="circle ml-2 bag bagBackground "><IoBagOutline/></button>
                  </Link>
                 <span className="count d-flex align-items-center justify-content-center">{cartItems.length}</span>

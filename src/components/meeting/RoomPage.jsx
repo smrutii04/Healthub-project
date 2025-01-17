@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
+import "./RoomPage.css"
+import Navbar from "../Navbar";
 
 const RoomPage = ({ roomId }) => {
 
@@ -31,10 +33,14 @@ const RoomPage = ({ roomId }) => {
     });
   };
   return (
-    <div>
+    <>
+    <Navbar/>
+    <div className="room-container">
       <div ref={myMeeting} />
     </div>
+    </>
   );
 };
 
 export default RoomPage;
+

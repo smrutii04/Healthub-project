@@ -3,11 +3,11 @@ import "./Home.css";
 import "../App.css"
 import Navbar from "./Navbar";
 
-function Home() {
+function Home({user}) {
   return (
     <div className="App">
       {/* Header Section */}
-     <Navbar/>
+     <Navbar user={user}/>
 
       
       <section className="hero-section">

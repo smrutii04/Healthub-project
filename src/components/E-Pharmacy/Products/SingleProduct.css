@@ -47,7 +47,7 @@
     align-items: center;
   }
   
-  .product-image {
+  .product-img {
     width: 100%;
     max-width: 250px;
     border-radius: 10px;
@@ -136,7 +136,9 @@
     text-align: center;
   }
   
-
-
+  .css-15fu35s-MuiDialogActions-root button {
+    color:white;
+    font-weight: 600;
+  }
 
   

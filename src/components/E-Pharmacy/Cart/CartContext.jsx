@@ -1,5 +1,7 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import axios from 'axios';
 
+const userId = JSON.parse(localStorage.getItem('userId'));
 // Create Cart Context
 const CartContext = createContext();
 
@@ -12,36 +14,53 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
+   useEffect(() => {
+    // Fetch cart items on page load
+    const fetchCart = async () => {
+      const { data } = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+      setCartItems(data);
+    };
 
-  // Add item to the cart
-  const addToCart = (product) => {
-    setCartItems((prevItems) => {
-      // Check if product is already in cart
-      const productExists = prevItems.find((item) => item.id === product.id);
-      if (productExists) {
-        return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...prevItems, { ...product, quantity: 1 }];
-      }
-    });
+    fetchCart();
+  }, []);
+
+  const addToCart = async (product) => {
+    const updatedCart = [...cartItems];
+    const itemIndex = updatedCart.findIndex((item) => item._id === product._id);
+
+    if (itemIndex !== -1) {
+      updatedCart[itemIndex].quantity += 1;
+    } else {
+      updatedCart.push({ ...product, quantity: 1 });
+    }
+
+    setCartItems(updatedCart);
+
+    // Save to backend
+    await axios.post(`http://localhost:5000/api/cart/${userId}`, { items: updatedCart });
   };
 
 
   
   // Remove item from the cart
-  const removeFromCart = (productId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
+  const removeFromCart = async (productId) => {
+    const updatedCart = cartItems.filter((item) => item._id !== productId);
+    setCartItems(updatedCart);
+
+    // Update backend
+    await axios.post(`http://localhost:5000/api/cart/${userId}`, { items: updatedCart });
   };
 
   // Update quantity
-  const updateQuantity = (productId, newQuantity) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item
-      )
+  const updateQuantity = async (productId, newQuantity) => {
+    const updatedCart = cartItems.map((item) =>
+      item._id === productId ? { ...item, quantity: newQuantity } : item
     );
+
+    setCartItems(updatedCart);
+
+    // Update backend
+    await axios.post(`http://localhost:5000/api/cart/${userId}`, { items: updatedCart });
   };
 
   return (

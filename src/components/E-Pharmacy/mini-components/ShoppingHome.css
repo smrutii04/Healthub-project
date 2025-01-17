@@ -5,7 +5,6 @@
   margin: 10px 0px;
 }
 
-
 /* Navbar */
 .navbar {
   display: flex;
@@ -134,7 +133,7 @@
   font-size: 16px; /* Adjust font size */
   color: white; /* Make the price white to match the icons */
   margin-right: 8px; /* Add space between the price and the bag icon */
-  width: 61px;
+  width: 70px;
 }
 
 /* Bag and User Icon Button Styling */

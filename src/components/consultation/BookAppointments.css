@@ -1,0 +1,224 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa; /* Light complementary background */
+    color: #333; /* Neutral dark color for text */
+  }
+  
+  .container.appointment {
+    max-width: 700px;
+    margin: 12% 28%;; /* Center the container */
+    padding: 20px;
+    background-color: #ffffff; /* White background for the card-like container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4e3b91;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, #6750A4, #4e3b91);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .card {
+    border: none;
+    background-color: #f0f5f8; /* Soft complementary color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    color: #333; /* Neutral color for doctor names */
+    font-size: 1.2rem;
+  }
+  
+  .card-text {
+    color: #555; /* Slightly lighter text for doctor info */
+  }
+  
+  button.btn-primary {
+    background-color: #6750a4; /* Button in complementary purple */
+    border-color: #6750a4;
+    color: #fff;
+  }
+  
+  button.btn-primary:hover {
+    background-color: #5a4090; /* Darker purple on hover */
+    border-color: #5a4090;
+  }
+  
+  .modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the modal */
+  }
+  
+  .modal-header {
+    background-color: #6750a4; /* Header background in purple */
+    color: #fff; /* White text for contrast */
+    border-bottom: none;
+  }
+  
+  .modal-title {
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding: 20px;
+    background-color: #f9f9f9; /* Soft light gray background for contrast */
+  }
+  
+  button.close {
+    color: #fff;
+    opacity: 1;
+  }
+  
+  form {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(to right, #f0f5f8, #e8eaf6);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+
+  form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #6750A4;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+
+  .form-group {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+  }
+
+  .form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #6750A4;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .form-group .form-control {
+    font-size: 15px;
+    color: #333;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 4px 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+  }
+
+
+.form-group .form-control:focus {
+    border-color: #6750A4;
+    box-shadow: 0 0 8px rgba(103, 80, 164, 0.5);
+    outline: none;
+  }
+  
+  /* Option Styling */
+  .form-group .form-control option {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  
+  
+  form .form-control {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+
+form .form-control:focus {
+    border-color: #6750A4;
+    box-shadow: 0 0 8px rgba(103, 80, 164, 0.5);
+    outline: none;
+  }
+
+ form button[type="submit"] {
+  background: linear-gradient(to right, #6750A4, #4e3b91);
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(103, 80, 164, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+
+form button[type="submit"]:hover {
+    background: linear-gradient(to right, #4e3b91, #3a2c6b);
+    box-shadow: 0 6px 15px rgba(103, 80, 164, 0.6);
+  }
+
+  @media (max-width: 768px) {
+    form {
+      padding: 15px;
+    }
+  
+    form button[type="submit"] {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
+  .navbar-appointments {
+    margin-bottom: 30px;
+  }
+  
+  .navbar-appointments{
+    width: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+  }
+
+  .background {
+    background: linear-gradient(to right, rgba(103, 80, 164, 0.8), rgba(240, 245, 248, 0.8));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Centering and styling the appointment container */
+  .appointment {
+    background: rgba(240, 245, 248, 0.9); 
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }

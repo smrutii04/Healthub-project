@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import Navbar from '../Navbar';
+import "./BookAppointments.css"
 
 const BookAppointments = () => {
   const [specialty, setSpecialty] = useState('');
@@ -27,11 +29,16 @@ const BookAppointments = () => {
   };
 
   return (
-    <div className="container">
+    <div className='background'>
+   <div className='navbar-appointments'>
+   <Navbar/>
+   </div>
+    <div className="container appointment">
+   
       <h1>Book Appointments</h1>
-      <Form.Group controlId="specialtySelect">
-        <Form.Label>Select Specialty</Form.Label>
-        <Form.Control as="select" value={specialty} onChange={handleSpecialtyChange}>
+      <Form.Group controlId="specialtySelect" className='form-group'>
+        <Form.Label className='form-label'>Select Specialty</Form.Label>
+        <Form.Control className='form-control' as="select" value={specialty} onChange={handleSpecialtyChange}>
           <option value="">Select...</option>
           <option value="dentist">Dentist</option>
           <option value="gynecologist">Gynecologist</option>
@@ -88,6 +95,7 @@ const BookAppointments = () => {
           </Form>
         </Modal.Body>
       </Modal>
+    </div>
     </div>
   );
 };

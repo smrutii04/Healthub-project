@@ -305,3 +305,8 @@
     transform: scale(1.2);
   }
   
+  .logout-btn{ border-radius: 8px;
+    padding: 2px 10px;
+    margin-left: 5px;
+    background-color: #d80032;
+  }
