@@ -13,7 +13,7 @@ function Login() {
     event.preventDefault();
     console.log("Login attempted with", email, password);
     try {
-      const response = await fetch("http://localhost:5000/api/patients/login", {
+      const response = await fetch("http://localhost:5000/api/doctors/login", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -21,14 +21,14 @@ function Login() {
 
       const data = await response.json();
       if (response.status === 200) {
-        localStorage.setItem('user', JSON.stringify(data.user));  
-        localStorage.setItem('userId', data.user._id);  // Store the user ID
-        console.log(localStorage.getItem('userId') );
+        localStorage.setItem('Doctor', JSON.stringify(data.user));  
+        localStorage.setItem('DoctorId', data.user._id);  // Store the user ID
+        console.log("Doctor_id: ",localStorage.getItem('DoctorId') );
         
 
         setAlertMessage('Login successful!');
         setTimeout(() => {
-          navigate(`/`);
+          navigate(`/doctors-dashboard`);
           window.location.reload();
         }, 1000); // wait for alert message
       } else {

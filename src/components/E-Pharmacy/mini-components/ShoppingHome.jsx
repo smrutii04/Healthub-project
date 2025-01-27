@@ -13,7 +13,7 @@ export default function ShoppingHome() {
   const { cartItems } = useCart();
   console.log('Cart Items:', cartItems);
 
-  const userId = JSON.parse(localStorage.getItem('userId'));
+  const userId = localStorage.getItem('userId');
   
 
   return (

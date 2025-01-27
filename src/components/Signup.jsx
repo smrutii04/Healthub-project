@@ -1,41 +1,41 @@
 import React, { useState } from 'react';
-import './Signup.css'; // Importing the CSS file
+import './Signup.css'; 
 import Alert from './E-Pharmacy/Products/Alert';
 
 function Signup() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleSignup = async (event) => {
     event.preventDefault();
-    // Here, you would handle the signup logic (e.g., API call)
     console.log("Signup attempted with", fullName, email, password);
-    try{
+    try {
       const response = await fetch("http://localhost:5000/api/patients/signup", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body:JSON.stringify({fullName, email, password})
+        body: JSON.stringify({ fullName, email, password })
       });
 
-      if(response.status === 201)
-      {
-        <Alert message = "Signup successful!! Now you can Login" />
-        setFullName('');
-        setEmail('');
-        setPassword('');
-      }
-      else if (response.status === 409) {
-        alert('User already exists. Please login.');
+      const data = await response.json();
+
+      if (response.status === 201) {
+        setAlertMessage('Signup successful! Now you can Login.');
+        setTimeout(() => {
+          setFullName('');
+          setEmail('');
+          setPassword('');
+        }, 1000); // Clear fields after showing message
+      } else if (response.status === 409) {
+        setAlertMessage('User already exists. Please login.');
       } else {
-        alert('An error occurred. Please try again.');
+        setAlertMessage('An error occurred. Please try again.');
       }
 
-    }
-    catch(error)
-    {
+    } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred. Please try again.');
+      setAlertMessage('An error occurred. Please try again.');
     }
   };
 
@@ -78,9 +78,9 @@ function Signup() {
             />
           </div>
           <button type="submit" className="signup-btn">Sign Up</button>
-          {/* <p>Already an User? <Link to="/login-patient">Login  </Link></p> */}
         </form>
       </div>
+      {alertMessage && <Alert message={alertMessage} />}
     </div>
   );
 }

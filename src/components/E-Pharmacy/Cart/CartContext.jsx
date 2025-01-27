@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
-const userId = JSON.parse(localStorage.getItem('userId'));
+const userId = localStorage.getItem('userId');
 // Create Cart Context
 const CartContext = createContext();
 

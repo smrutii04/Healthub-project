@@ -17,11 +17,11 @@ export default function Navbar() {
         <div className="logo">HealthHub</div>
           <nav className="nav-links">
             <a href="/">Home</a>
-            <a href="#disease-detection">Disease Detection</a>
+            <a href="/disease-detection">Disease Detection</a>
             <Link to="/order-medicines">Order Medicine</Link>
             <Link to="/book">Consult a Doctor</Link>
             <Link to="/medicine-schedule">Medicine Schedule</Link>
-            <a href="#medical-records">Medical Records</a>
+            <a href="/medical-records">Medical Records</a>
            
           </nav>
         <div className="auth-links">
@@ -33,8 +33,8 @@ export default function Navbar() {
             </>
         ):
         (<>
-          <Link to="/login-patient" className="login-btn">Login</Link>
-          <Link to="/signup-patient" className="signup-btn">Sign Up</Link>
+          <Link to="/choice-page" className="login-btn">Login</Link>
+          <Link to="/choice-page" className="signup-btn">Sign Up</Link>
         </>)}
 
         

@@ -1,4 +1,3 @@
-import './App.css'
 import Home from './components/Home'
 import Login from './components/Login'
 import Signup from './components/Signup'
@@ -14,12 +13,18 @@ import RoomPage from './components/meeting/RoomPage'
 import Checkout from './components/E-Pharmacy/CheckoutPage/Checkout'
 import MedicineSchedule from './components/MedicineSchedule-Feature/MedicineSchedule'
 import { useState } from 'react'
-
+import MedicalRecords from './components/MedicalRecords/MedicalRecords'
+import './App.css'
+import DiseaseDetection from './components/Disease-Detection/DiseaseDetection'
+import ChoicePage from './components/ChoicePage'
+import DoctorSignup from './components/DoctorSignup'
+import DoctorLogin from './components/DoctorLogin'
+import DoctorDashboard from './components/DoctorsDashboard'
 
 function App() {
 
   const [user, setUser] = useState(null);
-  const userId = JSON.parse(localStorage.getItem('userId'));
+
   return (
    <CartProvider>
      <BrowserRouter>
@@ -32,11 +37,17 @@ function App() {
           <Route path={`cart`} exact={true} element={<CartPage/>} />
           <Route path="/all-medicines" exact={true} element={<ProductDetails/>} />
           <Route path="/book" exact={true} element={<BookAppointments/>} />
-          <Route path="/room" exact={true} element={<RoomPage roomId={"rakesh"}/>} />
+          <Route path="/room/:roomId" element={<RoomPage />} />
           <Route path="/login-patient" exact={true} element={<Login setUser={setUser} />} />
           <Route path="/signup-patient" exact={true} element={<Signup  />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/medicine-schedule" element={<MedicineSchedule />} />
+          <Route path="/medical-records" element={<MedicalRecords />} />
+          <Route path="/disease-detection" element={<DiseaseDetection />} />
+          <Route path="/choice-page" element={<ChoicePage />} />
+          <Route path="/doctor-signup" element={<DoctorSignup />} />
+          <Route path="/doctor-login" element={<DoctorLogin />} />
+          <Route path="/doctors-dashboard" element={<DoctorDashboard />} />
         </Routes>
     </BrowserRouter>
    </CartProvider>
